@@ -2,19 +2,17 @@ import axios from 'axios';
 import React, { useState } from 'react';
 
 const LoginForm = () => {
-    const  projectID="963211d1-95c7-4b3f-b361-ae10b351c7b5";
+    
 
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
     const [error,setError]=useState('');
-
-   const authObject = {'Project-ID': projectID, 'User-Name':username, 'User-Secret': password}
-    
-    console.log(username,password,authObject);
+    const  projectID="963211d1-95c7-4b3f-b361-ae10b351c7b5";
     const handleSubmit = async(e)=>{
         e.preventDefault();
+        const authObject = { 'Project-ID': projectID, 'User-Name': username, 'User-Secret': password };
         try {
-            await axios.get('https://api.chatengine.io/users/',{headers:authObject})
+            await axios.get('https://api.chatengine.io/chats', { headers: authObject });
             localStorage.setItem('username',username)
             localStorage.setItem('password',password)
 
@@ -42,6 +40,18 @@ const LoginForm = () => {
                     </div>
                 </form>
                 <p>{error}</p>
+            </div>
+
+            <div  >
+                <h3>Try to login and start chat</h3>
+                <div style={{padding:'20px',color:'white'}}  >
+                    <h4> Usename: yasin </h4>
+                    <h4> password: 123123 </h4>
+                </div>
+                <div style={{padding:'20px',color:'white'}}>
+                    <h4> Usename: tushar </h4>
+                    <h4> password: 123123 </h4>
+                </div>
             </div>
         </div>
     );

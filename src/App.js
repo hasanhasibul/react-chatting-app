@@ -12,6 +12,7 @@ function App() {
   }
   return (
     <div className="App">
+      <div>logOut</div>
       <ChatEngine
         projectID={projectId}
         userName={username}
